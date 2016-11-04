@@ -11,8 +11,8 @@ using namespace std;
 
 int main(int argc, char ** argv) {
 
-  Mat img;
-  cvNamedWindow("Fractale de julia", CV_WINDOW_NORMAL);
+  Mat img(800, 600, CV_8UC3);
+  cvNamedWindow("Fractale de julia", CV_WINDOW_AUTOSIZE);
   setWindowProperty("Fractale de julia", CV_WND_PROP_FULLSCREEN, CV_WINDOW_FULLSCREEN);
   while(1) {
     imshow("Fractale de julia", img);
