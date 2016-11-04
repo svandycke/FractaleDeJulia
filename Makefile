@@ -21,7 +21,7 @@ LDFLAGS = -lopencv_highgui -lopencv_imgproc -lopencv_core
 UNAME := $(shell uname)
 ifeq ($(UNAME),Darwin)
 	MACOSX_DEPLOYMENT_TARGET = 10.10
-        CFLAGS += -I/usr/local/include/opencv2 -mmacosx-version-min=$(MACOSX_DEPLOYMENT_TARGET)
+        CFLAGS += -I/usr/local/include -mmacosx-version-min=$(MACOSX_DEPLOYMENT_TARGET)
         LDFLAGS += -mmacosx-version-min=$(MACOSX_DEPLOYMENT_TARGET) -L/usr/local/lib -lc++
 else
         CFLAGS += -I/usr/include/opencv2 -I/usr/include/opencv2/objdetect
