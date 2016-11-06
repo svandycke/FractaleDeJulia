@@ -1,2 +1,6 @@
 // Todo list 
-Essai
+* rélisation d'un programme qui affiche les fractales de JULIA; // fait
+* parallélisation cpu par les thread de C++; // à faire
+* permettre des fonctionnalité de l'utilisateur (zoom , changement de couleurs ...); // à faire
+* documentation; // à faire
+* rapport détaillé des performances et des comparatifs; // à faire

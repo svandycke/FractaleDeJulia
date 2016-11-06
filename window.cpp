@@ -26,7 +26,7 @@ Vec3b julia(long double i, long double j, complex<long double> c){
 }
 
 int main(int argc, char ** argv) {
-  Mat img(600, 600, CV_8UC3);//img(cols, rows, flags)
+  Mat img(1536, 2048, CV_8UC3);//img(cols, rows, flags)
   long double reel(-0.0986), imaginaire(-0.65186);
   cvNamedWindow("Fractale de julia", CV_WINDOW_AUTOSIZE);
   moveWindow("Fractale de julia", 0, 0);
@@ -37,8 +37,9 @@ int main(int argc, char ** argv) {
 	img.at<Vec3b>(Point(j, i)) = julia(((long double)i/img.rows) * 2. - 1., ((long double)j/img.cols) * 2. - 1. , c);
     imshow("Fractale de julia", img);
     if((waitKey(10) & 0xFF) == 'q' || (waitKey(10) & 0xFF) == 27){
-      exit(-1);
+      break;
     }
   }
+  imwrite("julia.jpg", img); // sauve une copie de l'image
   return 0;
 }
