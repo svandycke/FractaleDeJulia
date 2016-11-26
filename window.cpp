@@ -5,6 +5,8 @@
 //  with n thread: -DNB_THREAD=n
 
 #include <stdio.h>
+#include <iostream>
+#include <fstream>
 
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -53,12 +55,13 @@ void thread_func(int k){
 
 int main(int argc, char ** argv) { 
   Mat rgb(_H, _W, CV_8UC3);//img(cols, rows, flags)
-  long double reel(-0.181), imaginaire(-0.667);
-  int cnt(0);
+  long double reel(0.285), imaginaire(0.013);
+  int cnt(0), round_max = ((argc >= 2)? atoi(argv[1]):10);
   int64 t0 , t = 0;
+  ofstream log (argc == 3? argv[2]:"Test/Default.txt");
   cvNamedWindow("Fractale de julia", CV_WINDOW_AUTOSIZE);
   moveWindow("Fractale de julia", 0, 0);
-  printf("nombre de thread : %d\n", NB_THREAD);
+  log << "nombre de threads : " << NB_THREAD << endl;
   while(1) {
     c = complex<long double> (update(reel), update(imaginaire));
     t0 = getTickCount()/1000000;
@@ -71,15 +74,16 @@ int main(int argc, char ** argv) {
 #endif
     t += ((getTickCount()/1000000) - t0);
     cnt++;
-    printf("traitement %d\n", cnt);
+    log << "traitement n° " << cnt << endl;
     cvtColor(img, rgb, CV_HSV2RGB);
     imshow("Fractale de julia", rgb);
-    if((waitKey(10) & 0xFF) == 'q' || (waitKey(10) & 0xFF) == 27){
-      //t = getTickCount() - t0;
-      printf("temps passe = %Lf s\n", (long double)(t/1000.));
-      printf("\ntemps moyen = %lld ms\n", (t/cnt));
-      exit(-1);
+    if((waitKey(10) & 0xFF) == 'q' || (waitKey(10) & 0xFF) == 27 || cnt >= round_max){
+      log << "\ntemps passe = " << (long double)(t/1000.) << " s\n" << endl;
+      log << "\ntemps moyen = " << (t/cnt) << " ms\n" << endl;
+      log.close();
+      return 0;
     }
   }
+  log.close();
   return 0;
 }
