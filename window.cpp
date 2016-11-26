@@ -60,7 +60,7 @@ int main(int argc, char ** argv) {
   moveWindow("Fractale de julia", 0, 0);
   printf("nombre de thread : %d\n", NB_THREAD);
   while(1) {
-    c = complex<long double> ((reel), (imaginaire));
+    c = complex<long double> (update(reel), update(imaginaire));
     t0 = getTickCount()/1000000;
 #ifdef WITH_THREAD
     thread * th = new thread[NB_THREAD];
