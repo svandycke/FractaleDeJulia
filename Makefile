@@ -5,7 +5,7 @@
 
 SHELL = /bin/sh
 # définition des commandes utilisées
-CPPC = g++
+CPP = g++
 ECHO = echo
 RM = rm -f
 TAR = tar
@@ -14,18 +14,16 @@ CHMOD = chmod
 CP = rsync -R
 # déclaration des options du compilateur
 PG_FLAGS =
-CPPFLAGS = -I.
-CFLAGS = -Wall -O3
-LDFLAGS = -lopencv_highgui -lopencv_imgproc -lopencv_core 
+WITH_THREAD = -DWITH_THREAD
+
+CPPFLAGS = -Wall -O3 
+CFLAGS = 
+LDFLAGS = -lopencv_highgui -lopencv_imgproc -lopencv_core -std=c++11
 
 UNAME := $(shell uname)
 ifeq ($(UNAME),Darwin)
-	MACOSX_DEPLOYMENT_TARGET = 10.10
-        CFLAGS += -I/usr/local/include -mmacosx-version-min=$(MACOSX_DEPLOYMENT_TARGET)
-        LDFLAGS += -mmacosx-version-min=$(MACOSX_DEPLOYMENT_TARGET) -L/usr/local/lib -lc++
-else
-        CFLAGS += -I/usr/include/opencv2 -I/usr/include/opencv2/objdetect
-        LDFLAGS += -lstdc++
+        CFLAGS += 
+        LDFLAGS +=   
 endif
 
 #définition des fichiers et dossiers
@@ -40,13 +38,15 @@ DOXYFILE = documentation/Doxyfile
 EXTRAFILES =
 DISTFILES = $(SOURCES) Makefile $(HEADERS) $(DOXYFILE) $(EXTRAFILES)
 
-all: $(PROGNAME)
+all:
+	$(CPP) $(SOURCES) -o $(PROGNAME) $(LDFLAGS)
 
-$(PROGNAME): $(OBJ)
-	$(CC) $(OBJ) $(LDFLAGS) -o $(PROGNAME)
+thread:
+	$(CPP) $(SOURCES) -o $(PROGNAME) $(LDFLAGS) $(WITH_THREAD)
 
-%.o: %.cpp
-	$(CPPC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
+
+#%.o: %.cpp
+#	$(CPPC) $(CPPFLAGS) $(CFLAGS) -c $<  -o $@
 
 dist: distdir
 	$(CHMOD) -R a+r $(distdir)
