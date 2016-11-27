@@ -78,7 +78,6 @@ int main(int argc, char ** argv) {
   ofstream log (argc == 3? argv[2]:"Test/Default.txt", ios_base::app);
   cvNamedWindow("Fractale de julia", CV_WINDOW_AUTOSIZE);
   moveWindow("Fractale de julia", 0, 0);
-  log << "nombre de threads : " << NB_THREAD << endl;
   while(1) {
     c = complex<long double> (update(reel), update(imaginaire));
     t0 = getTickCount()/1000000;
@@ -91,7 +90,6 @@ int main(int argc, char ** argv) {
 #endif
     t += ((getTickCount()/1000000) - t0);
     cnt++;
-    log << "traitement n° " << cnt << endl;
     cvtColor(img, rgb, CV_HSV2RGB);
     setMouseCallback("Fractale de julia", mouseEvent, &pt);
     if(clicked) {
@@ -107,10 +105,11 @@ int main(int argc, char ** argv) {
     if((waitKey(10) & 0xFF) == 'd') coef -= 0.6;
     if((waitKey(10) & 0xFF) == 'r') {coef = 1.0; _offset = Point(0, 0);}
     if((waitKey(10) & 0xFF) == 'q' || (waitKey(10) & 0xFF) == 27 || cnt >= round_max){
-      log << "\ntemps passe = " << (long double)(t/1000.) << " s\n" << endl;
-      log << "\ntemps moyen = " << (t/cnt) << " ms\n" << endl;
-      log.close();
-      return 0;
+
+    log << NB_THREAD << ";" << (long double)(t/1000.) << ";" << (t/cnt) << "\n";
+    log.close();
+    
+    return 0;
     }
   }
   log.close();
