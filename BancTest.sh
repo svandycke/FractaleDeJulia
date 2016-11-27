@@ -18,7 +18,7 @@ echo "* Binôme A. BENNANI & S. VANDYCKE          *"
 echo "******************************************** \n"
 
 echo "* Nombre de traitement par test : $nbTraitement"
-echo "* Nombre de thread(s) maximum testé(s) : $nbThreadMax \n"
+echo "* Nombre de thread(s) maximum(s) testé(s) : $nbThreadMax \n"
 
 
 while [ $nbThread -le $nbThreadMax ]
