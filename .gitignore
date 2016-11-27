@@ -41,3 +41,5 @@ without_thread
 with_thread
 with_thread_cores
 threadtest.cpp
+
+/Test
