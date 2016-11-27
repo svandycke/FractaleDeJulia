@@ -50,7 +50,7 @@ Vec3b julia(long double i, long double j){
 
 void thread_func(int k){
 #ifdef WITH_THREAD
-  int i = k * img.rows/NB_THREAD, n = i + (img.rows/NB_THREAD);
+  int i = ceil(k * (float)img.rows/NB_THREAD), n = ceil(k * (float)img.rows/NB_THREAD + (float)img.rows/NB_THREAD);
 #else
   int i = 0, n = img.rows;
 #endif
@@ -75,7 +75,7 @@ int main(int argc, char ** argv) {
   long double reel(0.285), imaginaire(0.013);
   int cnt(0), round_max = ((argc >= 2)? atoi(argv[1]):10);
   int64 t0 , t = 0;
-  ofstream log (argc == 3? argv[2]:"Test/Default.txt",ios_base::app);
+  ofstream log (argc == 3? argv[2]:"Test/Default.txt", ios_base::app);
   cvNamedWindow("Fractale de julia", CV_WINDOW_AUTOSIZE);
   moveWindow("Fractale de julia", 0, 0);
   log << "nombre de threads : " << NB_THREAD << endl;
