@@ -9,7 +9,7 @@ make clean
 # Déclaration des variables
 declare -i nbThread=0
 declare -i nbThreadMax=10
-declare -i nbTraitement=20
+declare -i nbTraitement=4
 fichierResultat="Test/resultatsTest.txt"
 
 # Vérificatie si le fichier de sauvegarde existe
