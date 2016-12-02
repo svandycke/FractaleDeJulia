@@ -8,8 +8,8 @@ make clean
 
 # Déclaration des variables
 declare -i nbThread=0
-declare -i nbThreadMax=10
-declare -i nbTraitement=4
+declare -i nbThreadMax=500
+declare -i nbTraitement=500
 fichierResultat="Test/resultatsTest.txt"
 
 # Vérificatie si le fichier de sauvegarde existe
@@ -44,13 +44,20 @@ do
 		# Test avec N thread(s)
 		echo "Calcul de la fractale avec $nbThread thread(s)"
 		g++ window.cpp -o FractalesJulia.out -std=c++11 -lopencv_highgui -lopencv_imgproc -lopencv_core -DWITH_THREAD -DNB_THREAD=$nbThread -I/usr/local/include -L/usr/local/lib
-	fi	
+	fi
+
+	if [ $nbThread -le 20 ]
+	then
+		nbThread=nbThread+1
+  	else
+   		nbThread=nbThread*2
+	fi
+
+
 	    
     # Exécution du programme
     ./FractalesJulia.out $nbTraitement $fichierResultat
     
-    # Incrémentation de 1 le nbThread
-    nbThread=nbThread+1
 done
 
 echo "\n********************************************"

@@ -35,7 +35,7 @@ bool clicked = false;
 Point _offset = Point(0, 0);
 
 long double update(long double& number){
-  return (( (number += 0.00005) < 1. )? number : (number -= 2.));
+  return (( (number += 0.005) < 1. )? number : (number -= 2.));
 } 
 
 Vec3b julia(long double i, long double j){
