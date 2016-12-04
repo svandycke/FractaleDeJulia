@@ -1,5 +1,12 @@
 #!/bin/sh
 
+# file BancTest.sh
+#
+# \brief Fractales de Julia
+#
+# \author Abdellatif BENNANI & Steve VANDYCKE
+# \date December 04 2016
+
 # Nettoyage de la console
 clear
 
@@ -8,7 +15,7 @@ make clean
 
 # Déclaration des variables
 declare -i nbThread=0
-declare -i nbThreadMax=500
+declare -i nbThreadMax=396
 declare -i nbTraitement=500
 fichierResultat="Test/resultatsTest.txt"
 
@@ -30,7 +37,7 @@ echo "* Le résultat sera sauvegardé : $fichierResultat\n"
 echo "* Nombre de traitement par test : $nbTraitement"
 echo "* Nombre de thread(s) maximum(s) testé(s) : $nbThreadMax\n"
 
-
+# Boucle qui execute les tests
 while [ $nbThread -le $nbThreadMax ]
 do
 	if [ $nbThread -eq 0 ]
@@ -52,8 +59,6 @@ do
   	else
    		nbThread=nbThread*2
 	fi
-
-
 	    
     # Exécution du programme
     ./FractalesJulia.out $nbTraitement $fichierResultat

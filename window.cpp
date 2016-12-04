@@ -1,8 +1,24 @@
+/*!\file windows.c
+ *
+ * \brief Programmation Temps Réel : Fractales de Julia
+ *
+ * \author Abdellatif BENNANI & Steve VANDYCKE
+ * \date December 04 2016
+ */
 
-//  to compile : 
-//  g++ window.cpp -std=c++11 -lopencv_highgui -lopencv_imgproc -lopencv_core
-//  with threads:  -DWITH_THREAD
-//  with n thread: -DNB_THREAD=n
+/*!\
+ * Pour compiler sans thread
+ * g++ window.cpp -std=c++11 -lopencv_highgui -lopencv_imgproc -lopencv_core
+
+ * Pour compiler avec threads 
+ * g++ window.cpp -std=c++11 -lopencv_highgui -lopencv_imgproc -lopencv_core -DWITH_THREAD
+
+ * Pour compiler avec N threads 
+ * g++ window.cpp -std=c++11 -lopencv_highgui -lopencv_imgproc -lopencv_core -DWITH_THREAD -DNB_THREAD=n
+
+ * Il est possible de préciser la taille en largeur et hauteur de la fenêtre avec les options :
+ * -D_H et -D_W (Exemple : -D_H=1000 -D_W=1000)
+ */
 
 #include <stdio.h>
 #include <iostream>
@@ -28,16 +44,24 @@ using namespace std;
 #define _H 400
 #endif
 
+/*!\brief Définition des variables */
 Mat img(_H, _W, CV_8UC3);//img(cols, rows, flags)
 complex<long double> c;
 float coef = 1.;
 bool clicked = false;
 Point _offset = Point(0, 0);
 
+/*!\brief Fonction qui permet d'incrémenter l nombre complexe
+ * \param number Nombre complexe à incrémenter
+*/
 long double update(long double& number){
   return (( (number += 0.00005) < 1. )? number : (number -= 2.));
 } 
 
+/*!\brief Fonction qui calcul la valeur de chaque pixel à afficher avec l'utilisation de la suite de Julia
+ * \param i La partie réelle qui dépend de la largeur de l'écran
+ * \param j La partie imaginaire qui dépend de la hauteur de l'écran
+*/
 Vec3b julia(long double i, long double j){
   complex<long double> z(i, j);
   int val(0);
@@ -48,6 +72,9 @@ Vec3b julia(long double i, long double j){
   return Vec3b(255 - val, 255, 255);
 }
 
+/*!\brief Fonction threads
+ * \param k Rang du thread
+*/
 void thread_func(int k){
 #ifdef WITH_THREAD
   int i = ceil(k * (float)img.rows/NB_THREAD), n = ceil(k * (float)img.rows/NB_THREAD + (float)img.rows/NB_THREAD);
@@ -60,6 +87,13 @@ void thread_func(int k){
     }
 }
 
+/*!\brief Fonction qui gère l'évenement de la souris
+ * \param evt Evenement
+ * \param x Position x
+ * \param y Position y
+ * \param flags Non utilisé
+ * \param param C'est le point qui reçoit les coordonnées du clique
+*/
 void mouseEvent(int evt, int x, int y, int flags, void* param) {
   Point* pix = (Point*) param;
   if(evt == CV_EVENT_LBUTTONUP)
@@ -69,6 +103,10 @@ void mouseEvent(int evt, int x, int y, int flags, void* param) {
     }
 }
 
+/*!\brief Fonction principale (Main)
+ * \param argc Nombre de paramètres 
+ * \param argv Tableau de paramètres (1er paramètre : Nombre d'itération, par défaut : 10 / 2ème paramètre : Nom du fichier de sauvegarde des logs, par défaut : Test/Defaut.txt)
+*/
 int main(int argc, char ** argv) { 
   Mat rgb(_H, _W, CV_8UC3);//img(cols, rows, flags)
   Point pt;
