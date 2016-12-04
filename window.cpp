@@ -44,11 +44,15 @@ using namespace std;
 #define _H 400
 #endif
 
-/*!\brief Définition des variables */
+/*!\brief image partagé en global pour donner accés a tout les threads */
 Mat img(_H, _W, CV_8UC3);//img(cols, rows, flags)
+/*!\brief constante complexe globale pour accessible pour tout les threads */
 complex<long double> c;
+/*!\brief coefficient de zoom, se remet a 1 avec la touche 'r' */
 float coef = 1.;
+/*!\brief variable indique si un click souris est a traiter */ 
 bool clicked = false;
+/*!\brief variable permet de centrer l'image par un décalage sur x,y */
 Point _offset = Point(0, 0);
 
 /*!\brief Fonction qui permet d'incrémenter l nombre complexe
@@ -77,13 +81,19 @@ Vec3b julia(long double i, long double j){
 */
 void thread_func(int k){
 #ifdef WITH_THREAD
+  /*
+   * cette méthode optimise la manière de répartir les taches entre threads de façon à 
+   * rendre le calcul le plus équitable possible, ce qui résoud aussi le problème d'affichage
+   */
   int i = ceil(k * (float)img.rows/NB_THREAD), n = ceil(k * (float)img.rows/NB_THREAD + (float)img.rows/NB_THREAD);
+  /**/
 #else
   int i = 0, n = img.rows;
 #endif
   for(; i < n; i++)
     for(int j(0); j < img.cols; j++){
-      img.at<Vec3b>(Point(j, i)) = julia(((long double)(i + _offset.x)/(coef * img.rows)) * 2. - 1., ((long double)(j + _offset.y)/(coef * img.cols)) * 2. - 1.);
+      img.at<Vec3b>(Point(j, i)) = julia(((long double)(i + _offset.x)/(coef * img.rows)) * 2. - 1.,/*transposition
+de la valeur de i et de j entre -1 et 1 */((long double)(j + _offset.y)/(coef * img.cols)) * 2. - 1.);
     }
 }
 
@@ -108,7 +118,6 @@ void mouseEvent(int evt, int x, int y, int flags, void* param) {
  * \param argv Tableau de paramètres (1er paramètre : Nombre d'itération, par défaut : 10 / 2ème paramètre : Nom du fichier de sauvegarde des logs, par défaut : Test/Defaut.txt)
 */
 int main(int argc, char ** argv) { 
-  Mat rgb(_H, _W, CV_8UC3);//img(cols, rows, flags)
   Point pt;
   long double reel(0.285), imaginaire(0.013);
   int cnt(0), round_max = ((argc >= 2)? atoi(argv[1]):10);
@@ -128,18 +137,18 @@ int main(int argc, char ** argv) {
     #endif
     //t += ((getTickCount()/1000000) - t0);
     cnt++;
-    cvtColor(img, rgb, CV_HSV2RGB);
+    cvtColor(img, img, CV_HSV2RGB);
     setMouseCallback("Fractale de julia", mouseEvent, &pt);
     if(clicked) {
       _offset += Point((pt.y - _H/2), (pt.x - _W/2)); 
       coef += 0.6;
-      circle(rgb, pt, 5, Scalar(0, 0, 100), 1, CV_AA);
-      circle(rgb, pt, 10, Scalar(0, 0, 150), 1, CV_AA);
-      circle(rgb, pt, 15, Scalar(0, 0, 200), 1, CV_AA);
-      circle(rgb, pt, 20, Scalar(0, 0, 255), 1, CV_AA);
+      circle(img, pt, 5, Scalar(0, 0, 100), 1, CV_AA);
+      circle(img, pt, 10, Scalar(0, 0, 150), 1, CV_AA);
+      circle(img, pt, 15, Scalar(0, 0, 200), 1, CV_AA);
+      circle(img, pt, 20, Scalar(0, 0, 255), 1, CV_AA);
       clicked = false;
     }
-    imshow("Fractale de julia", rgb);
+    imshow("Fractale de julia", img);
     t += ((getTickCount()/1000000) - t0);
     if((waitKey(10) & 0xFF) == 'd') coef -= 0.6;
     if((waitKey(10) & 0xFF) == 'r') {coef = 1.0; _offset = Point(0, 0);}
