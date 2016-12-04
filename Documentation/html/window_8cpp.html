@@ -1,0 +1,493 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.12"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Fractal_de_julia: Référence du fichier window.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Fractal_de_julia
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.12 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Recherche');
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier window.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;opencv2/core/core.hpp&gt;</code><br />
+<code>#include &lt;opencv2/highgui/highgui.hpp&gt;</code><br />
+<code>#include &lt;opencv2/imgproc/imgproc.hpp&gt;</code><br />
+<code>#include &lt;complex&gt;</code><br />
+<code>#include &lt;thread&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de window.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="window_8cpp__incl.png" border="0" usemap="#window_8cpp" alt=""/></div>
+<map name="window_8cpp" id="window_8cpp">
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a75714185144c45f14d78b9a7c80a5a64"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8cpp.html#a75714185144c45f14d78b9a7c80a5a64">NB_THREAD</a>&#160;&#160;&#160;thread::hardware_concurrency()</td></tr>
+<tr class="separator:a75714185144c45f14d78b9a7c80a5a64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0fa0df230b56269007c9df4d48f34b9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8cpp.html#ac0fa0df230b56269007c9df4d48f34b9">_W</a>&#160;&#160;&#160;400</td></tr>
+<tr class="separator:ac0fa0df230b56269007c9df4d48f34b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd12a9f19197a7beb28140ffb95d1586"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8cpp.html#acd12a9f19197a7beb28140ffb95d1586">_H</a>&#160;&#160;&#160;400</td></tr>
+<tr class="separator:acd12a9f19197a7beb28140ffb95d1586"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:aac9a73c164559910eb07078588fdc8fb"><td class="memItemLeft" align="right" valign="top">Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8cpp.html#aac9a73c164559910eb07078588fdc8fb">img</a> (<a class="el" href="window_8cpp.html#acd12a9f19197a7beb28140ffb95d1586">_H</a>, <a class="el" href="window_8cpp.html#ac0fa0df230b56269007c9df4d48f34b9">_W</a>, CV_8UC3)</td></tr>
+<tr class="memdesc:aac9a73c164559910eb07078588fdc8fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">image partagé en global pour donner accés a tout les threads  <a href="#aac9a73c164559910eb07078588fdc8fb">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aac9a73c164559910eb07078588fdc8fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff1d415412d1f4ed7cd5da5f1069a104"><td class="memItemLeft" align="right" valign="top">long double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8cpp.html#aff1d415412d1f4ed7cd5da5f1069a104">update</a> (long double &amp;number)</td></tr>
+<tr class="memdesc:aff1d415412d1f4ed7cd5da5f1069a104"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet d'incrémenter l nombre complexe.  <a href="#aff1d415412d1f4ed7cd5da5f1069a104">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aff1d415412d1f4ed7cd5da5f1069a104"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36fba36a0444e83aab37f2a230faaf51"><td class="memItemLeft" align="right" valign="top">Vec3b&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8cpp.html#a36fba36a0444e83aab37f2a230faaf51">julia</a> (long double i, long double j)</td></tr>
+<tr class="memdesc:a36fba36a0444e83aab37f2a230faaf51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui calcul la valeur de chaque pixel à afficher avec l'utilisation de la suite de Julia.  <a href="#a36fba36a0444e83aab37f2a230faaf51">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a36fba36a0444e83aab37f2a230faaf51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addf7acad757e0d6989fdcb6620ce4cba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8cpp.html#addf7acad757e0d6989fdcb6620ce4cba">thread_func</a> (int k)</td></tr>
+<tr class="memdesc:addf7acad757e0d6989fdcb6620ce4cba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction threads.  <a href="#addf7acad757e0d6989fdcb6620ce4cba">Plus de détails...</a><br /></td></tr>
+<tr class="separator:addf7acad757e0d6989fdcb6620ce4cba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ef21ba50c57cb0d7db84d02abbf0b45"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8cpp.html#a3ef21ba50c57cb0d7db84d02abbf0b45">mouseEvent</a> (int evt, int x, int y, int flags, void *param)</td></tr>
+<tr class="memdesc:a3ef21ba50c57cb0d7db84d02abbf0b45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui gère l'évenement de la souris.  <a href="#a3ef21ba50c57cb0d7db84d02abbf0b45">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a3ef21ba50c57cb0d7db84d02abbf0b45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
+<tr class="memdesc:a3c04138a5bfe5d72780bb7e82a18e627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction principale (Main)  <a href="#a3c04138a5bfe5d72780bb7e82a18e627">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ab76ffc57ece679d9c8e7059f1a0aab1d"><td class="memItemLeft" align="right" valign="top">complex&lt; long double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8cpp.html#ab76ffc57ece679d9c8e7059f1a0aab1d">c</a></td></tr>
+<tr class="memdesc:ab76ffc57ece679d9c8e7059f1a0aab1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">constante complexe globale pour accessible pour tout les threads  <a href="#ab76ffc57ece679d9c8e7059f1a0aab1d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab76ffc57ece679d9c8e7059f1a0aab1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af97633e288d6f26e4de295157508f421"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8cpp.html#af97633e288d6f26e4de295157508f421">coef</a> = 1.</td></tr>
+<tr class="memdesc:af97633e288d6f26e4de295157508f421"><td class="mdescLeft">&#160;</td><td class="mdescRight">coefficient de zoom, se remet a 1 avec la touche 'r'  <a href="#af97633e288d6f26e4de295157508f421">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af97633e288d6f26e4de295157508f421"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5d06440a24c63145723a3f8a8e773b6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8cpp.html#ae5d06440a24c63145723a3f8a8e773b6">clicked</a> = false</td></tr>
+<tr class="memdesc:ae5d06440a24c63145723a3f8a8e773b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">variable indique si un click souris est a traiter  <a href="#ae5d06440a24c63145723a3f8a8e773b6">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae5d06440a24c63145723a3f8a8e773b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada5b01743607f837db82f57e9ddbecb8"><td class="memItemLeft" align="right" valign="top">Point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="window_8cpp.html#ada5b01743607f837db82f57e9ddbecb8">_offset</a> = Point(0, 0)</td></tr>
+<tr class="memdesc:ada5b01743607f837db82f57e9ddbecb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">variable permet de centrer l'image par un décalage sur x,y  <a href="#ada5b01743607f837db82f57e9ddbecb8">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ada5b01743607f837db82f57e9ddbecb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation des macros</h2>
+<a id="acd12a9f19197a7beb28140ffb95d1586"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd12a9f19197a7beb28140ffb95d1586">&sect;&nbsp;</a></span>_H</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _H&#160;&#160;&#160;400</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Référencé par <a class="el" href="window_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main()</a>.</p>
+
+</div>
+</div>
+<a id="ac0fa0df230b56269007c9df4d48f34b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0fa0df230b56269007c9df4d48f34b9">&sect;&nbsp;</a></span>_W</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _W&#160;&#160;&#160;400</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Référencé par <a class="el" href="window_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main()</a>.</p>
+
+</div>
+</div>
+<a id="a75714185144c45f14d78b9a7c80a5a64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75714185144c45f14d78b9a7c80a5a64">&sect;&nbsp;</a></span>NB_THREAD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NB_THREAD&#160;&#160;&#160;thread::hardware_concurrency()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Référencé par <a class="el" href="window_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main()</a>, et <a class="el" href="window_8cpp.html#addf7acad757e0d6989fdcb6620ce4cba">thread_func()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a id="aac9a73c164559910eb07078588fdc8fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac9a73c164559910eb07078588fdc8fb">&sect;&nbsp;</a></span>img()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Mat img </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="window_8cpp.html#acd12a9f19197a7beb28140ffb95d1586">_H</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="window_8cpp.html#ac0fa0df230b56269007c9df4d48f34b9">_W</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CV_8UC3&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>image partagé en global pour donner accés a tout les threads </p>
+
+<p>Référencé par <a class="el" href="window_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main()</a>, et <a class="el" href="window_8cpp.html#addf7acad757e0d6989fdcb6620ce4cba">thread_func()</a>.</p>
+
+</div>
+</div>
+<a id="a36fba36a0444e83aab37f2a230faaf51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36fba36a0444e83aab37f2a230faaf51">&sect;&nbsp;</a></span>julia()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vec3b julia </td>
+          <td>(</td>
+          <td class="paramtype">long double&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long double&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui calcul la valeur de chaque pixel à afficher avec l'utilisation de la suite de Julia. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>La partie réelle qui dépend de la largeur de l'écran </td></tr>
+    <tr><td class="paramname">j</td><td>La partie imaginaire qui dépend de la hauteur de l'écran </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Références <a class="el" href="window_8cpp.html#ab76ffc57ece679d9c8e7059f1a0aab1d">c</a>.</p>
+
+<p>Référencé par <a class="el" href="window_8cpp.html#addf7acad757e0d6989fdcb6620ce4cba">thread_func()</a>.</p>
+
+</div>
+</div>
+<a id="a3c04138a5bfe5d72780bb7e82a18e627"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c04138a5bfe5d72780bb7e82a18e627">&sect;&nbsp;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction principale (Main) </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>Nombre de paramètres </td></tr>
+    <tr><td class="paramname">argv</td><td>Tableau de paramètres (1er paramètre : Nombre d'itération, par défaut : 10 / 2ème paramètre : Nom du fichier de sauvegarde des logs, par défaut : Test/Defaut.txt) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Références <a class="el" href="window_8cpp.html#acd12a9f19197a7beb28140ffb95d1586">_H</a>, <a class="el" href="window_8cpp.html#ada5b01743607f837db82f57e9ddbecb8">_offset</a>, <a class="el" href="window_8cpp.html#ac0fa0df230b56269007c9df4d48f34b9">_W</a>, <a class="el" href="window_8cpp.html#ab76ffc57ece679d9c8e7059f1a0aab1d">c</a>, <a class="el" href="window_8cpp.html#ae5d06440a24c63145723a3f8a8e773b6">clicked</a>, <a class="el" href="window_8cpp.html#af97633e288d6f26e4de295157508f421">coef</a>, <a class="el" href="window_8cpp.html#aac9a73c164559910eb07078588fdc8fb">img()</a>, <a class="el" href="window_8cpp.html#a3ef21ba50c57cb0d7db84d02abbf0b45">mouseEvent()</a>, <a class="el" href="window_8cpp.html#a75714185144c45f14d78b9a7c80a5a64">NB_THREAD</a>, <a class="el" href="window_8cpp.html#addf7acad757e0d6989fdcb6620ce4cba">thread_func()</a>, et <a class="el" href="window_8cpp.html#aff1d415412d1f4ed7cd5da5f1069a104">update()</a>.</p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="window_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph.png" border="0" usemap="#window_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph" alt=""/></div>
+<map name="window_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph" id="window_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph">
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3ef21ba50c57cb0d7db84d02abbf0b45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ef21ba50c57cb0d7db84d02abbf0b45">&sect;&nbsp;</a></span>mouseEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mouseEvent </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>evt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>flags</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>param</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui gère l'évenement de la souris. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">evt</td><td>Evenement </td></tr>
+    <tr><td class="paramname">x</td><td>Position x </td></tr>
+    <tr><td class="paramname">y</td><td>Position y </td></tr>
+    <tr><td class="paramname">flags</td><td>Non utilisé </td></tr>
+    <tr><td class="paramname">param</td><td>C'est le point qui reçoit les coordonnées du clique </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Références <a class="el" href="window_8cpp.html#ae5d06440a24c63145723a3f8a8e773b6">clicked</a>.</p>
+
+<p>Référencé par <a class="el" href="window_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main()</a>.</p>
+
+</div>
+</div>
+<a id="addf7acad757e0d6989fdcb6620ce4cba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addf7acad757e0d6989fdcb6620ce4cba">&sect;&nbsp;</a></span>thread_func()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void thread_func </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>k</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction threads. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">k</td><td>Rang du thread </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Références <a class="el" href="window_8cpp.html#ada5b01743607f837db82f57e9ddbecb8">_offset</a>, <a class="el" href="window_8cpp.html#af97633e288d6f26e4de295157508f421">coef</a>, <a class="el" href="window_8cpp.html#aac9a73c164559910eb07078588fdc8fb">img()</a>, <a class="el" href="window_8cpp.html#a36fba36a0444e83aab37f2a230faaf51">julia()</a>, et <a class="el" href="window_8cpp.html#a75714185144c45f14d78b9a7c80a5a64">NB_THREAD</a>.</p>
+
+<p>Référencé par <a class="el" href="window_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main()</a>.</p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="window_8cpp_addf7acad757e0d6989fdcb6620ce4cba_cgraph.png" border="0" usemap="#window_8cpp_addf7acad757e0d6989fdcb6620ce4cba_cgraph" alt=""/></div>
+<map name="window_8cpp_addf7acad757e0d6989fdcb6620ce4cba_cgraph" id="window_8cpp_addf7acad757e0d6989fdcb6620ce4cba_cgraph">
+</map>
+</div>
+
+</div>
+</div>
+<a id="aff1d415412d1f4ed7cd5da5f1069a104"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff1d415412d1f4ed7cd5da5f1069a104">&sect;&nbsp;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long double update </td>
+          <td>(</td>
+          <td class="paramtype">long double &amp;&#160;</td>
+          <td class="paramname"><em>number</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui permet d'incrémenter l nombre complexe. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">number</td><td>Nombre complexe à incrémenter </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Référencé par <a class="el" href="window_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a id="ada5b01743607f837db82f57e9ddbecb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada5b01743607f837db82f57e9ddbecb8">&sect;&nbsp;</a></span>_offset</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Point _offset = Point(0, 0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>variable permet de centrer l'image par un décalage sur x,y </p>
+
+<p>Référencé par <a class="el" href="window_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main()</a>, et <a class="el" href="window_8cpp.html#addf7acad757e0d6989fdcb6620ce4cba">thread_func()</a>.</p>
+
+</div>
+</div>
+<a id="ab76ffc57ece679d9c8e7059f1a0aab1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab76ffc57ece679d9c8e7059f1a0aab1d">&sect;&nbsp;</a></span>c</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">complex&lt;long double&gt; c</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>constante complexe globale pour accessible pour tout les threads </p>
+
+<p>Référencé par <a class="el" href="window_8cpp.html#a36fba36a0444e83aab37f2a230faaf51">julia()</a>, et <a class="el" href="complex_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main()</a>.</p>
+
+</div>
+</div>
+<a id="ae5d06440a24c63145723a3f8a8e773b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5d06440a24c63145723a3f8a8e773b6">&sect;&nbsp;</a></span>clicked</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clicked = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>variable indique si un click souris est a traiter </p>
+
+<p>Référencé par <a class="el" href="window_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main()</a>, et <a class="el" href="window_8cpp.html#a3ef21ba50c57cb0d7db84d02abbf0b45">mouseEvent()</a>.</p>
+
+</div>
+</div>
+<a id="af97633e288d6f26e4de295157508f421"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af97633e288d6f26e4de295157508f421">&sect;&nbsp;</a></span>coef</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float coef = 1.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>coefficient de zoom, se remet a 1 avec la touche 'r' </p>
+
+<p>Référencé par <a class="el" href="window_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main()</a>, et <a class="el" href="window_8cpp.html#addf7acad757e0d6989fdcb6620ce4cba">thread_func()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.12
+</small></address>
+</body>
+</html>
