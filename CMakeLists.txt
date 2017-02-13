@@ -12,6 +12,8 @@ link_directories(/usr/local/lib)
 # link the libraries to the executable
 target_link_libraries (FractalesJulia)
 
+SET(CMAKE_CXX_FLAGS "-std=c++11")
+
 
 INCLUDE_DIRECTORIES(-L/usr/local/include/)
 link_directories( ${CMAKE_BINARY_DIR}/bin)
